@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  defaultdatabase:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "8004:80"

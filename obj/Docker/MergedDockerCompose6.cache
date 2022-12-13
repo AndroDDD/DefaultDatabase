@@ -1,0 +1,45 @@
+name: dockercompose2871654652703740774
+services:
+  db:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: 1011data
+    image: mcr.microsoft.com/mssql/server
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 1433
+      published: "1433"
+      protocol: tcp
+    restart: always
+    user: root
+    volumes:
+    - type: volume
+      source: mssql-server-default-database-data
+      target: /var/opt/mssql/data
+      volume: {}
+  defaultdatabase:
+    build:
+      context: D:\ASP.Net\DefaultDatabase\DefaultDatabase
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DB_PW: 1011data
+    image: defaultdatabase
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    restart: always
+networks:
+  default:
+    name: dockercompose2871654652703740774_default
+volumes:
+  mssql-server-default-database-data:
+    name: dockercompose2871654652703740774_mssql-server-default-database-data
