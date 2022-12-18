@@ -9,6 +9,7 @@ services:
       dockerfile: Dockerfile
     environment:
       - DB_PW
+      - DB_U
     depends_on:
       - db
   db:

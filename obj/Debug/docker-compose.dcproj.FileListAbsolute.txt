@@ -11,7 +11,6 @@ D:\ASP.Net\DefaultDatabase\DefaultDatabase\bin\Debug\Microsoft.EntityFrameworkCo
 D:\ASP.Net\DefaultDatabase\DefaultDatabase\bin\Debug\Swashbuckle.AspNetCore.Swagger.dll
 D:\ASP.Net\DefaultDatabase\DefaultDatabase\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.dll
 D:\ASP.Net\DefaultDatabase\DefaultDatabase\bin\Debug\Microsoft.OpenApi.dll
-D:\ASP.Net\DefaultDatabase\DefaultDatabase\bin\Debug\Microsoft.Extensions.Configuration.dll
 D:\ASP.Net\DefaultDatabase\DefaultDatabase\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.dll
 D:\ASP.Net\DefaultDatabase\DefaultDatabase\bin\Debug\Microsoft.Extensions.Caching.Memory.dll
 D:\ASP.Net\DefaultDatabase\DefaultDatabase\bin\Debug\Microsoft.Data.SqlClient.dll
