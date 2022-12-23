@@ -12,10 +12,6 @@ var dBConnStringConfig = new StringBuilder(Environment.GetEnvironmentVariable("C
 //                     .Replace("ENVDBPW", Environment.GetEnvironmentVariable("DB_PW"))
 //                     .ToString();
 // Add services to the container.
-builder.Services.Configure<ForwardedHeadersOptions>(options =>
-{
-    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
-});
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "My API", Version = "v1" });
@@ -26,6 +22,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDbContext<DefaultContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("ConStr")));
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IItemService, ItemService>();
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+});
 
 var app = builder.Build();
 
@@ -34,7 +34,7 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
     app.UseForwardedHeaders();
-    app.UseHsts();
+    // app.UseHsts();
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
