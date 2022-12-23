@@ -26,6 +26,14 @@ builder.Services.Configure<ForwardedHeadersOptions>(options =>
 {
     options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
 });
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ConfigureEndpointDefaults(listenOptions =>
+    {
+        listenOptions.UseHttps();
+
+    });
+});
 
 var app = builder.Build();
 
@@ -34,7 +42,7 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
     app.UseForwardedHeaders();
-    // app.UseHsts();
+    app.UseHsts();
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {

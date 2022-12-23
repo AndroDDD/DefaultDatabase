@@ -12,6 +12,12 @@
     },
     "Kestrel": {
       "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      },
+      "dotnetRunMessages": true,
       "Endpoints": {
         "Http": {
           "Url": "http://localhost:8004"
