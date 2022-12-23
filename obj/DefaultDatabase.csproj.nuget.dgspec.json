@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ASP.Net\\DefaultDatabase\\DefaultDatabase\\DefaultDatabase.csproj": {}
+    "D:\\ASP.Net\\DefaultDatabase\\DefaultDatabasev2\\DefaultDatabase.csproj": {}
   },
   "projects": {
-    "D:\\ASP.Net\\DefaultDatabase\\DefaultDatabase\\DefaultDatabase.csproj": {
+    "D:\\ASP.Net\\DefaultDatabase\\DefaultDatabasev2\\DefaultDatabase.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ASP.Net\\DefaultDatabase\\DefaultDatabase\\DefaultDatabase.csproj",
+        "projectUniqueName": "D:\\ASP.Net\\DefaultDatabase\\DefaultDatabasev2\\DefaultDatabase.csproj",
         "projectName": "DefaultDatabase",
-        "projectPath": "D:\\ASP.Net\\DefaultDatabase\\DefaultDatabase\\DefaultDatabase.csproj",
+        "projectPath": "D:\\ASP.Net\\DefaultDatabase\\DefaultDatabasev2\\DefaultDatabase.csproj",
         "packagesPath": "C:\\Users\\durha\\.nuget\\packages\\",
-        "outputPath": "D:\\ASP.Net\\DefaultDatabase\\DefaultDatabase\\obj\\",
+        "outputPath": "D:\\ASP.Net\\DefaultDatabase\\DefaultDatabasev2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

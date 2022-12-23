@@ -7,9 +7,9 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 var dBConnStringConfig = new StringBuilder(Environment.GetEnvironmentVariable("ConnectionStringsDockerConStr"));
-var dBConnString = dBConnStringConfig.Replace("ENVDBU", Environment.GetEnvironmentVariable("DB_U"))
-                    .Replace("ENVDBPW", Environment.GetEnvironmentVariable("DB_PW"))
-                    .ToString();
+// var dBConnString = dBConnStringConfig.Replace("ENVDBU", Environment.GetEnvironmentVariable("DB_U"))
+//                     .Replace("ENVDBPW", Environment.GetEnvironmentVariable("DB_PW"))
+//                     .ToString();
 // Add services to the container.
 builder.Services.AddSwaggerGen(c =>
 {
@@ -18,7 +18,7 @@ builder.Services.AddSwaggerGen(c =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddDbContext<DefaultContext>(x => x.UseSqlServer(dBConnString));
+builder.Services.AddDbContext<DefaultContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("ConStr")));
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IItemService, ItemService>();
 var app = builder.Build();
@@ -32,10 +32,10 @@ if (app.Environment.IsDevelopment())
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
     });
 
-    using(var scope = app.Services.CreateScope())
+    using (var scope = app.Services.CreateScope())
     {
         var defaultContext = scope.ServiceProvider.GetRequiredService<DefaultContext>();
-        defaultContext.Database.EnsureDeleted();
+        // defaultContext.Database.EnsureDeleted();
         defaultContext.Database.EnsureCreated();
     }
 }
