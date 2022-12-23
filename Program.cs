@@ -40,8 +40,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error");
     app.UseForwardedHeaders();
+    // app.UseExceptionHandler("/Error");
     app.UseHsts();
     app.UseSwagger();
     app.UseSwaggerUI(c =>
@@ -58,8 +58,8 @@ if (!app.Environment.IsDevelopment())
 }
 else
 {
-    app.UseDeveloperExceptionPage();
     app.UseForwardedHeaders();
+    // app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
