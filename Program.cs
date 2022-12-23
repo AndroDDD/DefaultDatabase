@@ -1,6 +1,7 @@
 using System;
 using DefaultDatabase.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.HttpOverrides;
 using DefaultDatabase.Services;
 using DefaultDatabase.DbContexts;
 using System.Text;
@@ -11,6 +12,10 @@ var dBConnStringConfig = new StringBuilder(Environment.GetEnvironmentVariable("C
 //                     .Replace("ENVDBPW", Environment.GetEnvironmentVariable("DB_PW"))
 //                     .ToString();
 // Add services to the container.
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+});
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "My API", Version = "v1" });
@@ -21,11 +26,32 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDbContext<DefaultContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("ConStr")));
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IItemService, ItemService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (!app.Environment.IsDevelopment())
 {
+    app.UseExceptionHandler("/Error");
+    app.UseForwardedHeaders();
+    app.UseHsts();
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+    });
+
+    using (var scope = app.Services.CreateScope())
+    {
+        var defaultContext = scope.ServiceProvider.GetRequiredService<DefaultContext>();
+        // defaultContext.Database.EnsureDeleted();
+        defaultContext.Database.EnsureCreated();
+    }
+}
+else
+{
+    app.UseDeveloperExceptionPage();
+    app.UseForwardedHeaders();
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {

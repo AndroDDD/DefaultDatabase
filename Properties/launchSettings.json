@@ -10,6 +10,17 @@
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:8004"
     },
+    "Kestrel": {
+      "commandName": "Project",
+      "Endpoints": {
+        "Http": {
+          "Url": "http://localhost:8004"
+        },
+        "Https": {
+          "Url": "https://localhost:8004"
+        }
+      }
+    },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
