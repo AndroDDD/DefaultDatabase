@@ -19,7 +19,7 @@ builder.Services.AddSwaggerGen(c =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddDbContext<DefaultContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("ConStr2")));
+builder.Services.AddDbContext<DefaultContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("ConStr")));
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IItemService, ItemService>();
 builder.Services.Configure<ForwardedHeadersOptions>(options =>
