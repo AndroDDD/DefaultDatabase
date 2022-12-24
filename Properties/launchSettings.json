@@ -1,4 +1,21 @@
 {
+  "Kestrel": {
+    "commandName": "Project",
+    "launchBrowser": true,
+    "launchUrl": "swagger",
+    "environmentVariables": {
+      "ASPNETCORE_ENVIRONMENT": "Production"
+    },
+    "dotnetRunMessages": true,
+    "Endpoints": {
+      "Http": {
+        "Url": "http://localhost:8004"
+      },
+      "Https": {
+        "Url": "https://localhost:8004"
+      }
+    }
+  },
   "profiles": {
     "DefaultDatabase": {
       "commandName": "Project",
@@ -9,23 +26,6 @@
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:8004"
-    },
-    "Kestrel": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Production"
-      },
-      "dotnetRunMessages": true,
-      "Endpoints": {
-        "Http": {
-          "Url": "http://localhost:8004"
-        },
-        "Https": {
-          "Url": "https://localhost:8004"
-        }
-      }
     },
     "IIS Express": {
       "commandName": "IISExpress",

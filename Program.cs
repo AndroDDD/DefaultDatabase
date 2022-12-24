@@ -41,7 +41,7 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseForwardedHeaders();
-    // app.UseExceptionHandler("/Error");
+    app.UseExceptionHandler("/Error");
     app.UseHsts();
     app.UseSwagger();
     app.UseSwaggerUI(c =>
@@ -59,7 +59,7 @@ if (!app.Environment.IsDevelopment())
 else
 {
     app.UseForwardedHeaders();
-    // app.UseDeveloperExceptionPage();
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
